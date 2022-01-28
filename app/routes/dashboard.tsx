@@ -141,7 +141,7 @@ export default function Index() {
   };
 
   const tabs = [
-    { id: 1, label: "Don't Follow's Back" },
+    { id: 1, label: "Don't Follow Back" },
     { id: 2, label: "I Don't Follow Back" },
   ];
 
