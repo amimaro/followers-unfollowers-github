@@ -10,7 +10,7 @@ import type { MetaFunction, LinksFunction } from "remix";
 import styles from "./styles/app.css";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "Followers & Unfollowers Github" };
 };
 
 export const links: LinksFunction = () => {
