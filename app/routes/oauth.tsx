@@ -7,7 +7,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   let url = new URL(request.url);
   let code = url.searchParams.get("code");
 
-  const response = await axios.post(
+  const { data: response } = await axios.post(
     "https://github.com/login/oauth/access_token",
     {
       client_id: process.env.GITHUB_CLIENT_ID,
@@ -21,11 +21,29 @@ export const loader: LoaderFunction = async ({ request }) => {
     }
   );
 
-  if (response.data.error) {
+  if (response.error) {
     throw new Response("Invalid code request", { status: 400 });
   }
 
-  session.set("access_token", response.data.access_token);
+  const { data: profile }: any = await axios.get(
+    "https://api.github.com/user",
+    {
+      headers: {
+        Authorization: `token ${response.access_token}`,
+      },
+    }
+  );
+
+  session.set("access_token", response.access_token);
+  session.set("user", {
+    username: profile.login,
+    name: profile.name,
+    url: profile.html_url,
+    avatar: profile.avatar_url,
+    followers: profile.followers,
+    following: profile.following,
+  });
+
   return redirect("/dashboard", {
     headers: {
       "Set-Cookie": await commitSession(session),
