@@ -74,7 +74,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   if (section === "1") {
     let { data: followingsData }: any = await axios.get(
-      `https://api.github.com/users/amimaro/following?per_page=${process.env.USERS_PER_PAGE}&page=${page}`,
+      `https://api.github.com/users/${user.username}/following?per_page=${process.env.USERS_PER_PAGE}&page=${page}`,
       {
         headers: {
           Authorization: `token ${accessToken}`,
@@ -92,7 +92,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     }
   } else {
     let { data: followersData }: any = await axios.get(
-      `https://api.github.com/users/amimaro/followers?per_page=${process.env.USERS_PER_PAGE}&page=${page}`,
+      `https://api.github.com/users/${user.username}/followers?per_page=${process.env.USERS_PER_PAGE}&page=${page}`,
       {
         headers: {
           Authorization: `token ${accessToken}`,
