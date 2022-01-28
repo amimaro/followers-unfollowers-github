@@ -1,7 +1,6 @@
 import axios from "axios";
 import {
   ActionFunction,
-  Form,
   Link,
   LoaderFunction,
   redirect,
@@ -148,7 +147,12 @@ export default function Index() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold">Dashboard</h1>
+      <div className="flex justify-between">
+        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <div>
+          <Link to={`/logout`}>Logout</Link>
+        </div>
+      </div>
       <div className="flex justify-evenly">
         {tabs.map((tab) => (
           <div key={tab.label}>
