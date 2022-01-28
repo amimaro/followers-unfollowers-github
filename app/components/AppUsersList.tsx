@@ -7,7 +7,7 @@ export const AppUsersList: React.FC<{
 }> = ({ users, page, section }) => {
   return (
     <div>
-      <ul>
+      <ul className="flex flex-col gap-1">
         {users.map((user: any) => (
           <li key={user.id}>
             <div
@@ -17,7 +17,7 @@ export const AppUsersList: React.FC<{
                   : "bg-green-100"
               }`}
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 pl-10">
                 <img
                   src={user.avatar_url}
                   alt={`${user.login} avatar`}
@@ -34,13 +34,13 @@ export const AppUsersList: React.FC<{
                   </a>
                 </div>
               </div>
-              <div className="pr-10">
+              <div className="flex flex-col items-center w-40">
                 {user.isFollowingBack && (
                   <Form method="delete">
                     <input type="hidden" name="user" value={user.login} />
                     <input type="hidden" name="page" value={page} />
                     <input type="hidden" name="section" value={section} />
-                    <button type="submit">UnFollow</button>
+                    <button type="submit" className="button">UnFollow</button>
                   </Form>
                 )}
                 {!user.isFollowingBack && (
@@ -48,7 +48,7 @@ export const AppUsersList: React.FC<{
                     <input type="hidden" name="user" value={user.login} />
                     <input type="hidden" name="page" value={page} />
                     <input type="hidden" name="section" value={section} />
-                    <button type="submit">Follow</button>
+                    <button type="submit" className="button">Follow</button>
                   </Form>
                 )}
               </div>

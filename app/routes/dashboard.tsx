@@ -146,20 +146,24 @@ export default function Index() {
   ];
 
   return (
-    <div>
-      <div className="flex justify-between">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+    <div className="p-10">
+      <div className="flex justify-between pb-5">
+        <h1>Dashboard</h1>
         <div>
-          <Link to={`/logout`}>Logout</Link>
+          <Link to={`/logout`} className="px-4 py-2 underline">
+            Logout
+          </Link>
         </div>
       </div>
-      <div className="flex justify-evenly">
+      <div className="flex gap-10 pb-2">
         {tabs.map((tab) => (
           <div key={tab.label}>
             <Link
               to={`/dashboard?page=1&section=${tab.id}`}
               prefetch="none"
-              className={`${getSection() === tab.id ? "font-bold" : ""}`}
+              className={`text-lg tracking-wide underline ${
+                getSection() === tab.id ? "font-bold" : ""
+              }`}
             >
               {tab.label}
             </Link>

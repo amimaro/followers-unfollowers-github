@@ -6,8 +6,8 @@ export const AppPaginator: React.FC<{
   maxPerPage: number;
 }> = ({ page, section, maxPerPage }) => {
   return (
-    <div className="flex justify-between">
-      <span>
+    <div className="flex justify-between items-end pt-5 px-10">
+      <span className="font-semibold text-lg">
         Page {page} of {maxPerPage}
       </span>
       <div className="flex gap-4">
@@ -15,6 +15,7 @@ export const AppPaginator: React.FC<{
           <Link
             to={`/dashboard?page=${page - 1}&section=${section}`}
             prefetch="render"
+            className="button"
           >
             Previous
           </Link>
@@ -23,6 +24,7 @@ export const AppPaginator: React.FC<{
           <Link
             to={`/dashboard?page=${page + 1}&section=${section}`}
             prefetch="render"
+            className="button"
           >
             Next
           </Link>

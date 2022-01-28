@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+  @apply text-3xl font-bold tracking-widest
+}
+
+.button {
+  @apply px-4 py-2 border-2 text-white bg-gray-400 font-semibold active:bg-gray-500 rounded-md
+}
